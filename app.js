@@ -1,11 +1,12 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const dns = require('node:dns');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const authRoutes = require('./Routes/AuthRoutes');
-const usersRoutes = require('./Routes/UsersRoutes');
-const serverless = require('serverless-http')
+import express from 'express';
+import dotenv from 'dotenv';
+import dns from 'node:dns';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import authRoutes from './Routes/AuthRoutes.js';
+import usersRoutes from './Routes/UsersRoutes.js';
+// const serverless = require('serverless-http')
+
 
 dotenv.config()
 dns.setServers(["1.1.1.1","8.8.8.8"])
@@ -47,8 +48,11 @@ app.use((err, req, res, next) => {
     })
 })
 
-module.exports = serverless(app)
+if (process.env.ENVIRONMENT !== "production") {
+    app.listen(port, (req, res) => {
+        console.log("Server is running on port", port)
+    })
+}
 
-// app.listen(port, (req, res) => {
-//     console.log("Server is running on port", port)
-// })
+// Export the app for serverless deployment
+export default app

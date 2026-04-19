@@ -1,5 +1,5 @@
-const Users = require("../models/UserModel")
-const jwt = require('jsonwebtoken')
+import Users from "../models/UserModel.js";
+import jwt from 'jsonwebtoken';
 
 const getUsersController = async (req, res) => {
     //Users mongoose find
@@ -62,4 +62,4 @@ const updateUsersController = async (req, res) => {
     }
 }
 
-module.exports = { getUsersController, updateUsersController }
+export { getUsersController, updateUsersController }

@@ -1,11 +1,9 @@
-const Users = require("../models/UserModel")
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
-const sendEmailOTP = require("../Utilities/nodeMailer");
-const uuid = require('uuid')
-
-const { v4: uuidv4 } = uuid
+import Users from "../models/UserModel.js";
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import nodemailer from 'nodemailer'
+import sendEmailOTP from "../Utilities/nodeMailer.js";
+import { v4 as uuid } from 'uuid';
 
 const signupController = async (req, res) => {
     try {
@@ -81,4 +79,4 @@ const loginController = async (req, res) => {
 
 }
 
-module.exports = { signupController, loginController }
+export {signupController, loginController}
