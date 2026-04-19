@@ -48,11 +48,11 @@ app.use((err, req, res, next) => {
     })
 })
 
-if (process.env.ENVIRONMENT !== "production") {
+// if (process.env.ENVIRONMENT !== "production") {
     app.listen(port, (req, res) => {
         console.log("Server is running on port", port)
     })
-}
+// }
 
 // Export the app for serverless deployment
-export default app
+// export default app

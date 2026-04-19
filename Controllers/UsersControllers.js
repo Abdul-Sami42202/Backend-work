@@ -35,7 +35,7 @@ const getUsersController = async (req, res) => {
     res.json({
         status: true,
         message: "All users fetched successfully.",
-        data: Users
+        data: users
     })
 }
 

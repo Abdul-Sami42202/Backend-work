@@ -1,7 +1,6 @@
 import Users from "../models/UserModel.js";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import nodemailer from 'nodemailer'
 import sendEmailOTP from "../Utilities/nodeMailer.js";
 import { v4 as uuid } from 'uuid';
 
@@ -19,7 +18,7 @@ const signupController = async (req, res) => {
             // Store hash in your password DB.
             req.body.password = hash
 
-            const OTP = uuidv4().split('-')[0]
+            const OTP = uuid().split('-')[0]
             const messageByTransporter = await sendEmailOTP(req.body.email, OTP)
             console.log(OTP)    
 
