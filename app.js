@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./Routes/AuthRoutes');
 const usersRoutes = require('./Routes/UsersRoutes');
-// const serverless = require('serverless-http')
+const serverless = require('serverless-http')
 
 dotenv.config()
 dns.setServers(["1.1.1.1","8.8.8.8"])
@@ -47,11 +47,8 @@ app.use((err, req, res, next) => {
     })
 })
 
-// module.exports = serverless(app)
-if (false) {
-    app.listen(port, (req, res) => {
-        console.log("Server is running on port", port)
-    })
-}
+module.exports = serverless(app)
 
-module.exports = app
+// app.listen(port, (req, res) => {
+//     console.log("Server is running on port", port)
+// })
